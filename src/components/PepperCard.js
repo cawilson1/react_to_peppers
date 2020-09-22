@@ -1,8 +1,23 @@
 import React from "react";
 
-export default function PepperCard({ pepper }) {
+function isExpandedPepper(currentPepperId, expandedPepperId) {
+  return currentPepperId === expandedPepperId;
+}
+
+export default function PepperCard({
+  pepper,
+  setExpandedPepperId,
+  expandedPepperId
+}) {
   return (
-    <div style={styles.box}>
+    <div
+      onClick={() => setExpandedPepperId(pepper.id)}
+      style={
+        isExpandedPepper(pepper.id, expandedPepperId)
+          ? styles.expandedBox
+          : styles.box
+      }
+    >
       <div style={styles.cardHeader}>
         <img src={pepper.pic} alt="pepper" width="200 px" />
         <div>{pepper.id}</div>{" "}
@@ -26,6 +41,20 @@ const styles = {
   box: {
     position: "relative",
     width: "400px",
+    padding: "50px",
+    margin: "10px",
+    backgroundColor: "#fff",
+    webkitBoxShadow:
+      "0 0 4px rgba(0, 0, 0, 0.2) inset 0 0 50px rgba(0, 0, 0, 0.1)",
+    mozBoxShadow:
+      "0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1)",
+    boxShadow: "0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1)",
+    borderRadius: "5px"
+  },
+  expandedBox: {
+    position: "relative",
+    width: "800px",
+    height: "900px",
     padding: "50px",
     margin: "10px",
     backgroundColor: "#fff",
