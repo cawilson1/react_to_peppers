@@ -73,7 +73,7 @@ const peppersDb = [
   },
   {
     name: "BRAIN STRAIN CHILI PEPPER",
-    scoville: "1,300,000",
+    scoville: 1300000,
     pic:
       "https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2018/07/Brain-Strain-Chili-Pepper1.jpg",
     flavor: "Hot",
@@ -82,6 +82,17 @@ const peppersDb = [
     growthTimeMonths: 4,
     size: 2,
     id: 7
+  },
+  {
+    name: "HABANERO",
+    scoville: 250000,
+    pic: "https://aaronparecki.com/img/1240x0/2018/12/25/8/habaneros.jpg",
+    flavor: "Hot",
+    color: "orange",
+    species: "Capsicum chinense",
+    growthTimeMonths: 8,
+    size: 4,
+    id: 8
   }
 ];
 
