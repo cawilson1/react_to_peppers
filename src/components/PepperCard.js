@@ -11,7 +11,11 @@ export default function PepperCard({
 }) {
   return (
     <div
-      onClick={() => setExpandedPepperId(pepper.id)}
+      onClick={() =>
+        isExpandedPepper(pepper.id, expandedPepperId)
+          ? setExpandedPepperId(undefined)
+          : setExpandedPepperId(pepper.id)
+      }
       style={
         isExpandedPepper(pepper.id, expandedPepperId)
           ? styles.expandedBox
