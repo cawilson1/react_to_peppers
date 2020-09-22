@@ -70,6 +70,18 @@ const peppersDb = [
     growthTimeMonths: 3,
     size: 2,
     id: 6
+  },
+  {
+    name: "BRAIN STRAIN CHILI PEPPER",
+    scoville: "1,300,000",
+    pic:
+      "https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2018/07/Brain-Strain-Chili-Pepper1.jpg",
+    flavor: "Hot",
+    color: "orange",
+    species: "CAPSICUM CHINENSE",
+    growthTimeMonths: 4,
+    size: 2,
+    id: 7
   }
 ];
 

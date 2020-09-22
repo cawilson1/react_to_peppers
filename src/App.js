@@ -4,14 +4,18 @@ import peppersDb from "./fakeDb/pepperDb";
 function App() {
   console.log(peppersDb);
   return (
-    <>
+    <div style={styles.cardContainer}>
       {peppersDb.map(pepper => (
         <div style={styles.box}>
           <div style={styles.cardHeader}>
             <img src={pepper.pic} alt="pepper" width="200 px" />
-            <div>{pepper.id}</div> <h1>{pepper.name}</h1>
+            <div>{pepper.id}</div>{" "}
+            <div>
+              <h1>{pepper.name}</h1>
+              <h3>{pepper.species}</h3>
+            </div>
           </div>
-          <h3>{pepper.species}</h3>
+          <br />
 
           <div>{pepper.flavor}</div>
           <div>{pepper.scoville}</div>
@@ -20,7 +24,7 @@ function App() {
           <div>{pepper.color}</div>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 
@@ -29,7 +33,7 @@ const styles = {
     position: "relative",
     width: "400px",
     padding: "50px",
-    margin: "0 auto",
+    margin: "10px",
     backgroundColor: "#fff",
     webkitBoxShadow:
       "0 0 4px rgba(0, 0, 0, 0.2) inset 0 0 50px rgba(0, 0, 0, 0.1)",
@@ -40,6 +44,10 @@ const styles = {
   },
   cardHeader: {
     display: "flex"
+  },
+  cardContainer: {
+    display: "flex",
+    flexWrap: "wrap"
   }
 };
 
