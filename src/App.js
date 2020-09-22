@@ -8,7 +8,9 @@ function App() {
 
   return (
     <>
-      <button onClick={() => setSignedIn(!signedIn)}>Toggle Sign In</button>
+      <button onClick={() => setSignedIn(!signedIn)}>
+        {signedIn ? "Sign Out" : "Sign In"}
+      </button>
       <div style={styles.cardContainer}>
         {peppersDb.map(pepper => (
           <PepperCard pepper={pepper} />
