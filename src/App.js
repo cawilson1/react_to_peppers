@@ -1,7 +1,30 @@
 import React from "react";
 import peppersDb from "./fakeDb/pepperDb";
 
-const classes = {
+function App() {
+  console.log(peppersDb);
+  return (
+    <>
+      {peppersDb.map(pepper => (
+        <div style={styles.box}>
+          <div style={styles.cardHeader}>
+            <img src={pepper.pic} alt="pepper" width="200 px" />
+            <div>{pepper.id}</div> <h1>{pepper.name}</h1>
+          </div>
+          <h3>{pepper.species}</h3>
+
+          <div>{pepper.flavor}</div>
+          <div>{pepper.scoville}</div>
+          <div>{pepper.size}</div>
+          <div>{pepper.growthTimeMonths}</div>
+          <div>{pepper.color}</div>
+        </div>
+      ))}
+    </>
+  );
+}
+
+const styles = {
   box: {
     position: "relative",
     width: "400px",
@@ -14,27 +37,10 @@ const classes = {
       "0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1)",
     boxShadow: "0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1)",
     borderRadius: "5px"
+  },
+  cardHeader: {
+    display: "flex"
   }
 };
-
-function App() {
-  console.log(peppersDb);
-  return (
-    <div style={classes.box}>
-      <div>
-        <img src={peppersDb[0].pic} alt="pepper" width="200 px" />
-        {/* <div>{peppersDb[0].id}</div> */}
-        <h1>{peppersDb[0].name}</h1>
-      </div>
-      <h3>{peppersDb[0].species}</h3>
-
-      <div>{peppersDb[0].flavor}</div>
-      <div>{peppersDb[0].scoville}</div>
-      <div>{peppersDb[0].size}</div>
-      <div>{peppersDb[0].growthTimeMonths}</div>
-      <div>{peppersDb[0].color}</div>
-    </div>
-  );
-}
 
 export default App;
