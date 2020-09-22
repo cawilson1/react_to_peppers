@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import peppersDb from "./fakeDb/pepperDb";
 import PepperCard from "./components/PepperCard";
 
 function App() {
+  const [signedIn, setSignedIn] = useState(false);
+  console.log("signed in state", signedIn);
+
   return (
-    <div style={styles.cardContainer}>
-      {peppersDb.map(pepper => (
-        <PepperCard pepper={pepper} />
-      ))}
-    </div>
+    <>
+      <button onClick={() => setSignedIn(!signedIn)}>Toggle Sign In</button>
+      <div style={styles.cardContainer}>
+        {peppersDb.map(pepper => (
+          <PepperCard pepper={pepper} />
+        ))}
+      </div>
+    </>
   );
 }
 
