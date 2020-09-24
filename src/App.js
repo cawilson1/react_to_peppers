@@ -8,6 +8,7 @@ function App() {
   const [signedIn, setSignedIn] = useState(false);
   const [peppersDb, setPeppersDb] = useState([]);
   const [jwtToken, setJwtToken] = useState(undefined);
+  const [allPeppers, setAllPeppers] = useState(true);
 
   useEffect(() => {
     console.log(window.localStorage.getItem("jwt"));
@@ -29,10 +30,17 @@ function App() {
       }
     })();
   }, [jwtToken]);
+
   return (
     <>
-      <Navbar signedIn={signedIn} setSignedIn={setSignedIn} />
-      <PepperCardContainer peppersDb={peppersDb} />
+      <Navbar
+        signedIn={signedIn}
+        setSignedIn={setSignedIn}
+        setAllPeppers={setAllPeppers}
+        allPeppers={allPeppers}
+      />
+
+      <PepperCardContainer peppersDb={peppersDb} allPeppers={allPeppers} />
     </>
   );
 }

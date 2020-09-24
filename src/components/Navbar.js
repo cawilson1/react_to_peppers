@@ -22,7 +22,12 @@ async function attemptLogin(un, pw, setSignedIn, signedIn) {
     console.log(error);
   }
 }
-export default function Navbar({ signedIn, setSignedIn }) {
+export default function Navbar({
+  signedIn,
+  setSignedIn,
+  setAllPeppers,
+  allPeppers
+}) {
   const defaultValue = {
     un: "",
     pw: ""
@@ -54,6 +59,9 @@ export default function Navbar({ signedIn, setSignedIn }) {
         }}
       >
         {signedIn ? "Sign Out" : "Sign In"}
+      </button>
+      <button onClick={() => setAllPeppers(!allPeppers)}>
+        {allPeppers ? "Show only my peppers" : "Show all peppers"}
       </button>
     </>
   );

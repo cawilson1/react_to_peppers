@@ -37,6 +37,7 @@ export default function PepperCard({
       <div>{pepper.size}</div>
       <div>{pepper.growthTimeMonths}</div>
       <div>{pepper.color}</div>
+      <div>{pepper.user}</div>
     </div>
   );
 }

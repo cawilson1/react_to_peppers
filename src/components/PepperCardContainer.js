@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import PepperCard from "./PepperCard";
 
-export default function PepperCardContainer({ peppersDb }) {
+export default function PepperCardContainer({ peppersDb, allPeppers }) {
   const [expandedPepperId, setExpandedPepperId] = useState(undefined);
   console.log("expandedPepperId", expandedPepperId);
-  return (
-    <div style={styles.cardContainer}>
-      {peppersDb.map(pepper => (
-        <PepperCard
-          pepper={pepper}
-          setExpandedPepperId={setExpandedPepperId}
-          expandedPepperId={expandedPepperId}
-        />
-      ))}
-    </div>
-  );
+  if (allPeppers) {
+    return (
+      <div style={styles.cardContainer}>
+        {peppersDb.map(pepper => (
+          <PepperCard
+            pepper={pepper}
+            setExpandedPepperId={setExpandedPepperId}
+            expandedPepperId={expandedPepperId}
+          />
+        ))}
+      </div>
+    );
+  }
+  return <div>Show all peppers</div>;
 }
 const styles = {
   cardContainer: {
