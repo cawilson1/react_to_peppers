@@ -1,15 +1,16 @@
 const peppersDb = [
   {
-    name: "Golden Cayenne",
-    scoville: 40000, //heat
+    name: "Golden Cayenne", //VARCHAR(255) NOT NULL
+    scoville: 40000, //heat //INT NOT NULL
     pic:
-      "https://edge.bonnieplants.com/www/tiny/uploads/20200810205412/golden-cayenne-pepper.jpg",
-    flavor: "spicy, sweet, apple-y",
-    color: "yellow",
-    species: "capsicum annuum",
-    growthTimeMonths: 1,
-    size: 4, //1-10 (1 smallest)
-    id: 1
+      "https://edge.bonnieplants.com/www/tiny/uploads/20200810205412/golden-cayenne-pepper.jpg", //VARCHAR 2000 NOT NULL
+    flavor: "spicy, sweet, apple-y", //VARCHAR (2000)
+    color: "yellow", //VARCHAR (255)
+    species: "capsicum annuum", //VARCHAR 255
+    growthTimeMonths: 1, //TINYINT
+    size: 4, //1-10 (1 smallest) //TINYINT
+    id: 1, //INT AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY
+    user: "Casey" //VARCHAR 255 FOREIGN KEY
   },
   {
     name: "Bishops Crown",
@@ -21,7 +22,8 @@ const peppersDb = [
     species: "Capsicum baccatum",
     growthTimeMonths: 1,
     size: 4, //1-10 (1 smallest)
-    id: 2
+    id: 2,
+    user: "Casey"
   },
   {
     name: "Tabasco",
@@ -33,7 +35,8 @@ const peppersDb = [
     species: "Capsicum frutescens",
     growthTimeMonths: 1,
     size: 2, //1-10 (1 smallest)
-    id: 3
+    id: 3,
+    user: "Casey"
   },
   {
     name: "Serrano",
@@ -45,7 +48,8 @@ const peppersDb = [
     species: "capsicum annuum",
     growthTimeMonths: 3,
     size: 5,
-    id: 4
+    id: 4,
+    user: "Mike"
   },
   {
     name: "Poblano",
@@ -57,7 +61,8 @@ const peppersDb = [
     species: "capsicum annuum",
     growthTimeMonths: 6,
     size: 8,
-    id: 5
+    id: 5,
+    user: "Bo"
   },
   {
     name: "Thai Hot Ornamental Pepper",
@@ -69,7 +74,8 @@ const peppersDb = [
     species: "capsicum annuum",
     growthTimeMonths: 3,
     size: 2,
-    id: 6
+    id: 6,
+    user: "Ben"
   },
   {
     name: "BRAIN STRAIN CHILI PEPPER",
@@ -81,7 +87,8 @@ const peppersDb = [
     species: "CAPSICUM CHINENSE",
     growthTimeMonths: 4,
     size: 2,
-    id: 7
+    id: 7,
+    user: "West"
   },
   {
     name: "HABANERO",
@@ -92,7 +99,8 @@ const peppersDb = [
     species: "Capsicum chinense",
     growthTimeMonths: 8,
     size: 4,
-    id: 8
+    id: 8,
+    user: "Dobson"
   }
 ];
 
