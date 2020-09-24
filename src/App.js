@@ -10,10 +10,10 @@ function App() {
   const [jwtToken, setJwtToken] = useState(undefined);
 
   useEffect(() => {
-    setJwtToken(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJlbiIsImlhdCI6MTYwMDk2MjM1Mn0.-SIe_o49FGm0CR1bKo3FhpeuiLnxUIDdteXMZ3WIY4w"
-    );
-  }, []);
+    console.log(window.localStorage.getItem("jwt"));
+    setJwtToken(window.localStorage.getItem("jwt"));
+    if (!signedIn) setPeppersDb([]);
+  }, [signedIn]);
 
   useEffect(() => {
     if (!jwtToken) return;
