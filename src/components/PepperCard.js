@@ -60,7 +60,7 @@ export default function PepperCard({
         <div>{pepper.size}</div>
         <div>{pepper.growthTimeMonths}</div>
         <div>{pepper.color}</div>
-        <div>{user ? user : pepper.user}</div>
+        <div>{share ? pepper.user : pepper.nada}</div>
       </div>
       {share ? (
         <button>

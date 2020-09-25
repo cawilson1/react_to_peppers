@@ -6,10 +6,6 @@ export default function SharedPeppers({ jwtToken }) {
   const [sharedPeppers, setSharedPeppers] = useState([]);
   const [expandedPepperId, setExpandedPepperId] = useState(undefined);
 
-  function getUser(peppersDb) {
-    return peppersDb[0] ? peppersDb[0].user : undefined;
-  }
-
   useEffect(() => {
     console.log("fetch the shared peppers");
     try {
@@ -33,7 +29,6 @@ export default function SharedPeppers({ jwtToken }) {
       {sharedPeppers.map(pepper => {
         return (
           <PepperCard
-            user={getUser(sharedPeppers)}
             jwtToken={jwtToken}
             pepper={pepper}
             setExpandedPepperId={setExpandedPepperId}
