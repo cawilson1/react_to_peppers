@@ -5,7 +5,8 @@ export default function MyPeppers({
   peppersDb,
   styles,
   setExpandedPepperId,
-  expandedPepperId
+  expandedPepperId,
+  jwtToken
 }) {
   //   console.log(jwtToken);
   console.log("MY PEPPER", peppersDb);
@@ -14,6 +15,8 @@ export default function MyPeppers({
       {peppersDb &&
         peppersDb.map(pepper => (
           <PepperCard
+          jwtToken={jwtToken}
+            share={true}
             pepper={pepper}
             setExpandedPepperId={setExpandedPepperId}
             expandedPepperId={expandedPepperId}

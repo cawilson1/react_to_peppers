@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ShareIcon from "@material-ui/icons/Share";
+import axios from "axios";
+import UserListPopover from "./UserListPopover";
 
 function isExpandedPepper(currentPepperId, expandedPepperId) {
   return currentPepperId === expandedPepperId;
@@ -7,39 +10,70 @@ function isExpandedPepper(currentPepperId, expandedPepperId) {
 export default function PepperCard({
   pepper,
   setExpandedPepperId,
-  expandedPepperId
+  expandedPepperId,
+  share,
+  jwtToken
 }) {
-  console.log(pepper);
-  return (
-    <div
-      onClick={() =>
-        isExpandedPepper(pepper.id, expandedPepperId)
-          ? setExpandedPepperId(undefined)
-          : setExpandedPepperId(pepper.id)
-      }
-      style={
-        isExpandedPepper(pepper.id, expandedPepperId)
-          ? styles.expandedBox
-          : styles.box
-      }
-    >
-      <div style={styles.cardHeader}>
-        <img src={pepper.pic} alt="pepper" width="200 px" />
-        <div>{pepper.id}</div>{" "}
-        <div>
-          <h1>{pepper.name}</h1>
-          <h3>{pepper.species}</h3>
-        </div>
-      </div>
-      <br />
+  const [userList, setUserList] = useState([]);
+  useEffect(() => {
+    console.log("inside use effect");
+    if (!share) {
+      (async function() {
+        try {
+          const response = await axios.get("http://localhost:4000/allusers");
+          setUserList(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
+  }, []);
+  console.log(jwtToken);
 
-      <div>{pepper.flavor}</div>
-      <div>{pepper.scoville}</div>
-      <div>{pepper.size}</div>
-      <div>{pepper.growthTimeMonths}</div>
-      <div>{pepper.color}</div>
-      <div>{pepper.user}</div>
-    </div>
+  return (
+    <>
+      <div
+        onClick={() =>
+          isExpandedPepper(pepper.id, expandedPepperId)
+            ? setExpandedPepperId(undefined)
+            : setExpandedPepperId(pepper.id)
+        }
+        style={
+          isExpandedPepper(pepper.id, expandedPepperId)
+            ? styles.expandedBox
+            : styles.box
+        }
+      >
+        <div style={styles.cardHeader}>
+          <img src={pepper.pic} alt="pepper" width="200 px" />
+          <div>{pepper.id}</div>{" "}
+          <div>
+            <h1>{pepper.name}</h1>
+            <h3>{pepper.species}</h3>
+          </div>
+        </div>
+        <br />
+
+        <div>{pepper.flavor}</div>
+        <div>{pepper.scoville}</div>
+        <div>{pepper.size}</div>
+        <div>{pepper.growthTimeMonths}</div>
+        <div>{pepper.color}</div>
+        <div>{pepper.user}</div>
+      </div>
+      {!share ? (
+        <button>
+          <ShareIcon />
+          <UserListPopover
+            pepperId={pepper.id}
+            jwtToken={jwtToken}
+            users={userList}
+          />
+        </button>
+      ) : (
+        <></>
+      )}
+    </>
   );
 }
 

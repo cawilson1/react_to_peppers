@@ -35,7 +35,6 @@ export default function Navbar({
   };
   const [signInForm, setSignInForm] = useState(defaultValue);
 
-  // console.log(signInForm);
   return (
     <>
       Username:

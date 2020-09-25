@@ -9,10 +9,8 @@ function App() {
   const [peppersDb, setPeppersDb] = useState([]);
   const [jwtToken, setJwtToken] = useState(undefined);
   const [allPeppers, setAllPeppers] = useState(false);
-  // console.log(jwtToken);
   useEffect(() => {
     if (signedIn) {
-      // console.log(window.localStorage.getItem("jwt"));
       setJwtToken(window.localStorage.getItem("jwt"));
       fetchPeppers();
     }
@@ -20,7 +18,6 @@ function App() {
 
   function fetchPeppers() {
     console.log("FETCH PEPPERS");
-    // if (jwtToken && signedIn) {
     console.log(jwtToken);
     let url;
     if (allPeppers) {
@@ -40,32 +37,7 @@ function App() {
         console.log(error);
       }
     })();
-    // }
   }
-
-  // useEffect(() => {
-  //   if (jwtToken && signedIn) callIt();
-  // }, []);
-  // useEffect(() => {
-  //   (async function() {
-  //     try {
-  //       const response = await axios.post(
-  //         "http://localhost:4000/getpeppersbyuser",
-  //         {
-  //           jwt: jwtToken
-  //         }
-  //       );
-  //       console.log(response.data);
-  //       setPeppersDb(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })();
-  // }, []);
-  // console.log(signedIn);
-  // console.log(peppersDb);
-  // console.log(jwtToken);
-  console.log(allPeppers, " and ", peppersDb);
 
   return (
     <>
