@@ -45,6 +45,7 @@ export default function PepperCard({
             : styles.box
         }
       >
+        {console.log(pepper)}
         <div style={styles.cardHeader}>
           <img src={pepper.pic} alt="pepper" width="200 px" />
           <div>{pepper.id}</div>{" "}
