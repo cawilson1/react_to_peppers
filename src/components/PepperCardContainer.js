@@ -8,7 +8,7 @@ export default function PepperCardContainer({
   jwtToken
 }) {
   const [expandedPepperId, setExpandedPepperId] = useState(undefined);
-  if (allPeppers) {
+  if (!allPeppers) {
     return (
       <div style={styles.cardContainer}>
         {peppersDb.map((pepper, index) => (

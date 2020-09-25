@@ -12,12 +12,13 @@ export default function PepperCard({
   setExpandedPepperId,
   expandedPepperId,
   share,
-  jwtToken
+  jwtToken,
+  user
 }) {
   const [userList, setUserList] = useState([]);
   useEffect(() => {
     console.log("inside use effect");
-    if (!share) {
+    if (share) {
       (async function() {
         try {
           const response = await axios.get("http://localhost:4000/allusers");
@@ -28,7 +29,7 @@ export default function PepperCard({
       })();
     }
   }, []);
-  console.log(jwtToken);
+  console.log(user);
 
   return (
     <>
@@ -59,9 +60,9 @@ export default function PepperCard({
         <div>{pepper.size}</div>
         <div>{pepper.growthTimeMonths}</div>
         <div>{pepper.color}</div>
-        <div>{pepper.user}</div>
+        <div>{user ? user : pepper.user}</div>
       </div>
-      {!share ? (
+      {share ? (
         <button>
           <ShareIcon />
           <UserListPopover
