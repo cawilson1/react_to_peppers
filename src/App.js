@@ -8,39 +8,82 @@ function App() {
   const [signedIn, setSignedIn] = useState(false);
   const [peppersDb, setPeppersDb] = useState([]);
   const [jwtToken, setJwtToken] = useState(undefined);
-  const [allPeppers, setAllPeppers] = useState(true);
-
+  const [allPeppers, setAllPeppers] = useState(false);
+  // console.log(jwtToken);
   useEffect(() => {
-    console.log(window.localStorage.getItem("jwt"));
-    setJwtToken(window.localStorage.getItem("jwt"));
-    if (!signedIn) setPeppersDb([]);
+    if (signedIn) {
+      // console.log(window.localStorage.getItem("jwt"));
+      setJwtToken(window.localStorage.getItem("jwt"));
+      fetchPeppers();
+    }
   }, [signedIn]);
 
-  useEffect(() => {
-    if (!jwtToken) return;
+  function fetchPeppers() {
+    console.log("FETCH PEPPERS");
+    // if (jwtToken && signedIn) {
+    console.log(jwtToken);
+    let url;
+    if (allPeppers) {
+      url = "http://localhost:4000/getpeppers";
+    } else {
+      url = "http://localhost:4000/getpeppersbyuser";
+    }
     (async () => {
       try {
-        const response = await axios.post("http://localhost:4000/getpeppers", {
-          jwt: jwtToken
+        const response = await axios.post(url, {
+          jwt: window.localStorage.getItem("jwt")
         });
         console.log(response);
-        setPeppersDb(response.data);
+        setAllPeppers(!allPeppers);
+        setPeppersDb([...response.data]);
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [jwtToken]);
+    // }
+  }
+
+  // useEffect(() => {
+  //   if (jwtToken && signedIn) callIt();
+  // }, []);
+  // useEffect(() => {
+  //   (async function() {
+  //     try {
+  //       const response = await axios.post(
+  //         "http://localhost:4000/getpeppersbyuser",
+  //         {
+  //           jwt: jwtToken
+  //         }
+  //       );
+  //       console.log(response.data);
+  //       setPeppersDb(response.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, []);
+  // console.log(signedIn);
+  // console.log(peppersDb);
+  // console.log(jwtToken);
+  console.log(allPeppers, " and ", peppersDb);
 
   return (
     <>
       <Navbar
         signedIn={signedIn}
         setSignedIn={setSignedIn}
-        setAllPeppers={setAllPeppers}
         allPeppers={allPeppers}
+        fetchPeppers={fetchPeppers}
       />
 
-      <PepperCardContainer peppersDb={peppersDb} allPeppers={allPeppers} />
+      {
+        <PepperCardContainer
+          peppersDb={peppersDb}
+          allPeppers={allPeppers}
+          jwtToken={jwtToken}
+          setPeppersDb={setPeppersDb}
+        />
+      }
     </>
   );
 }

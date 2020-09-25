@@ -26,7 +26,8 @@ export default function Navbar({
   signedIn,
   setSignedIn,
   setAllPeppers,
-  allPeppers
+  allPeppers,
+  fetchPeppers
 }) {
   const defaultValue = {
     un: "",
@@ -60,8 +61,8 @@ export default function Navbar({
       >
         {signedIn ? "Sign Out" : "Sign In"}
       </button>
-      <button onClick={() => setAllPeppers(!allPeppers)}>
-        {allPeppers ? "Show only my peppers" : "Show all peppers"}
+      <button onClick={fetchPeppers}>
+        {!allPeppers ? "Show only my peppers" : "Show all peppers"}
       </button>
     </>
   );

@@ -9,6 +9,7 @@ export default function PepperCard({
   setExpandedPepperId,
   expandedPepperId
 }) {
+  console.log(pepper);
   return (
     <div
       onClick={() =>
@@ -49,9 +50,9 @@ const styles = {
     padding: "50px",
     margin: "10px",
     backgroundColor: "#fff",
-    webkitBoxShadow:
+    WebkitBoxShadow:
       "0 0 4px rgba(0, 0, 0, 0.2) inset 0 0 50px rgba(0, 0, 0, 0.1)",
-    mozBoxShadow:
+    MozBoxShadow:
       "0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1)",
     boxShadow: "0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1)",
     borderRadius: "5px"
@@ -63,9 +64,9 @@ const styles = {
     padding: "50px",
     margin: "10px",
     backgroundColor: "#fff",
-    webkitBoxShadow:
+    WebkitBoxShadow:
       "0 0 4px rgba(0, 0, 0, 0.2) inset 0 0 50px rgba(0, 0, 0, 0.1)",
-    mozBoxShadow:
+    MozBoxShadow:
       "0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1)",
     boxShadow: "0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1)",
     borderRadius: "5px"
